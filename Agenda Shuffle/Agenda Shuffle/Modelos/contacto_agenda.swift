@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
-
+//creamos una estructura, y luego el protocolo identifiable, que será una forma de identificarse único
 struct ContactoAgenda: Identifiable {
-    var nombre : String
-    var telefono : String
-    
-    var id: String {nombre}
+    var nombre: String
+    var telefono: String
+    var id: String { nombre }
 }
 
 /*
