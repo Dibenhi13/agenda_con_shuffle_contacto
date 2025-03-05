@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB3F35082D78BCE1003E9387 /* pantalla_del_ganador.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3F35072D78BCE1003E9387 /* pantalla_del_ganador.swift */; };
+		FB3F350A2D78BF44003E9387 /* barra_busqueda.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3F35092D78BF44003E9387 /* barra_busqueda.swift */; };
 		FB9EAE432D7618DE00970D55 /* pantalla_agregar_contacto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9EAE422D7618DE00970D55 /* pantalla_agregar_contacto.swift */; };
 		FB9EAE472D761C4300970D55 /* Icono.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9EAE462D761C4300970D55 /* Icono.swift */; };
 		FBD7D2CB2D6F797D00C40ABC /* Agenda_ShuffleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD7D2CA2D6F797D00C40ABC /* Agenda_ShuffleApp.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB3F35072D78BCE1003E9387 /* pantalla_del_ganador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pantalla_del_ganador.swift; sourceTree = "<group>"; };
+		FB3F35092D78BF44003E9387 /* barra_busqueda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barra_busqueda.swift; sourceTree = "<group>"; };
 		FB9EAE422D7618DE00970D55 /* pantalla_agregar_contacto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pantalla_agregar_contacto.swift; sourceTree = "<group>"; };
 		FB9EAE462D761C4300970D55 /* Icono.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icono.swift; sourceTree = "<group>"; };
 		FBD7D2C72D6F797D00C40ABC /* Agenda Shuffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agenda Shuffle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +48,7 @@
 			isa = PBXGroup;
 			children = (
 				FB9EAE422D7618DE00970D55 /* pantalla_agregar_contacto.swift */,
+				FB3F35072D78BCE1003E9387 /* pantalla_del_ganador.swift */,
 			);
 			path = Pantallas;
 			sourceTree = "<group>";
@@ -91,6 +96,7 @@
 			children = (
 				FB9EAE462D761C4300970D55 /* Icono.swift */,
 				FBD7D2DD2D6F7FC200C40ABC /* contacto_prevista.swift */,
+				FB3F35092D78BF44003E9387 /* barra_busqueda.swift */,
 			);
 			path = Componentes;
 			sourceTree = "<group>";
@@ -173,9 +179,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB3F350A2D78BF44003E9387 /* barra_busqueda.swift in Sources */,
 				FB9EAE472D761C4300970D55 /* Icono.swift in Sources */,
 				FBD7D2DB2D6F7C1A00C40ABC /* PantallaAgenda.swift in Sources */,
 				FBD7D2DE2D6F7FC200C40ABC /* contacto_prevista.swift in Sources */,
+				FB3F35082D78BCE1003E9387 /* pantalla_del_ganador.swift in Sources */,
 				FBD7D2E12D6F871500C40ABC /* contacto_agenda.swift in Sources */,
 				FB9EAE432D7618DE00970D55 /* pantalla_agregar_contacto.swift in Sources */,
 				FBD7D2CB2D6F797D00C40ABC /* Agenda_ShuffleApp.swift in Sources */,

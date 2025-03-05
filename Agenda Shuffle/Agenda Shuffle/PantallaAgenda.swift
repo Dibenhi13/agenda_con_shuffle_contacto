@@ -35,6 +35,9 @@ struct PantallaAgenda: View {
     
     var body: some View {
         ScrollView{
+    
+            
+            
             VStack (spacing: 10){
                 ForEach(contactos_actuales){ contacto in
                     //Text("\(contacto.nombre)")
@@ -101,7 +104,8 @@ struct PantallaAgenda: View {
                 let contacto_nuevo = ContactoAgenda(nombre: nombre, telefono: numero)
                 contactos_actuales.append(contacto_nuevo)
                 mostrar_pantalla_agregar_contacto.toggle()
-            })
+            }
+            )
         }
     }
 }
