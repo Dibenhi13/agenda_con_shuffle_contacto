@@ -16,35 +16,32 @@ struct ContactoPrevista: View {
     
     
     var body: some View {
-        HStack(alignment: VerticalAlignment.center, spacing: (10)){
-            Spacer()
+        HStack(spacing: (12)){
+            Image("Neville")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50, height: 50)
+                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                .foregroundColor(.brown.opacity(0.8))
             
-            VStack {
-                Image("Neville")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 75, alignment: .center)
-                    .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
-                    .background(Color.blue)
-            }
             
-            .background(Color.white)
-            
-            Spacer()
-            
-            VStack(alignment: HorizontalAlignment.leading, spacing: 10) {
+            VStack (alignment: .leading, spacing: 2) {
                 Text(contacto_a_mostrar.nombre)
+                    .font(.headline)
+                    .foregroundColor(.primary)
                 Text(contacto_a_mostrar.telefono)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
             }
             
-            .background(Color.gray)
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.vertical, 8)
             
             Spacer()
+            
         }
-        
-        .background(Color.red)
-        .frame(maxWidth: .infinity)
+        .padding()
+        .background(RoundedRectangle(cornerSize: esquinas_redondeadas)
+            .fill(Color.brown.opacity(0.6)))
         .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
         .onTapGesture {
             al_pulsar()

@@ -12,48 +12,78 @@ struct pantalla_agregar_contacto: View {
     @State private var numero_telefonico: String = ""
     
     var boton_salir: () -> Void = {
-        print("Parece que te has equivocado")
+        print("Cerrando pantalla de agregar contacto")
     }
     
     
     var boton_agregar: (_ nombre : String, _ numero: String) -> Void = {nombre, numero in
-        print("Parece que te has equivocado")
+        print("Agregando contacto: \(nombre) - \(numero)")
     }
     
     
     var body: some View {
-        Text("Colocar la etiqueta de nombre")
-        ZStack{
-            Rectangle()
-                .frame(maxWidth: .infinity, maxHeight: 75)
-                .foregroundColor(Color.cyan)
-            TextField("Placeholder", text: $nombre)
-                .padding(10)
-        }
-        
-        Text("Colocar el campo del numero telefonico")
-        TextField("Placeholder numeros", text: $numero_telefonico)
-            .frame(height: 35)
-            .padding(10)
-        
-        HStack{
-            //Este icono es para agregar un contacto
-            Icono(tamano: 65, ruta_icono: "person.crop.circle.badge.plus",
-                  padding: 10)
-            .onTapGesture {
-                boton_agregar(nombre, numero_telefonico)
+        VStack(spacing: 20){
+            Text("Nuevo Contacto")
+                .font(.title)
+                .bold()
+                .foregroundColor(.brown)
+            
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Nombre")
+                    .foregroundColor(.brown)
+                    .bold()
+                TextField("Ingrese el nombre",text: $nombre)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
             }
             
-            Spacer()
-            //Este es para salir
-            Icono(tamano: 65, ruta_icono: "return")
-                .background(nombre == "" ? Color.red: Color.cyan)
-                .onTapGesture {
-                    boton_salir()
+            VStack(alignment: .leading, spacing: 10)
+            {
+                Text("Número Telefónico")
+                    .foregroundColor(.brown)
+                    .bold()
+                TextField("Ingrese el número", text: $numero_telefonico)
+                    .keyboardType(.phonePad)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+            
+            HStack{
+                Button(action:{
+                    boton_agregar(nombre, numero_telefonico)
+                })
+                {
+                    HStack{
+                        Image(systemName: "person.crop.circle.badge.plus")
+                        Text("Agregar")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.brown.opacity(0.8))
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
                 }
-
+                .disabled(nombre.isEmpty || numero_telefonico.isEmpty)
+                
+                Button(action: {
+                    boton_salir()
+                })
+                {
+                    HStack{
+                        Image(systemName: "xmark.circle")
+                        Text("Cancelar")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.gray.opacity(0.3))
+                    .foregroundColor(.black)
+                    .cornerRadius(10)
+                }
+            }
         }
-        .background(Color.cyan)
+        .padding()
+        .background(Color(UIColor.systemBackground))
+        .cornerRadius(15)
+        .shadow(radius: 5)
+        .padding()
     }
 }
 
