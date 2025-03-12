@@ -21,7 +21,7 @@ struct ContactoPrevista: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 50, height: 50)
-                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                .clipShape(Circle())
                 .foregroundColor(.brown.opacity(0.8))
             
             

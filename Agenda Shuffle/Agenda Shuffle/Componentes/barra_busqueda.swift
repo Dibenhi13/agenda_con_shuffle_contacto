@@ -6,56 +6,36 @@
 //
 
 import SwiftUI
-
-
-struct barra_busqueda: View {
-    @State private var nombre: String = ""
+struct BarraBusqueda: View {
+    @Binding var textoBusqueda: String
     
-    var contacto_a_mostrar: ContactoAgenda
-    var al_pulsar: () -> Void = { print("No se ha implementado") }
+   var alPulsarBuscar: () -> Void = { print("Buscar no implementado") }
     
-    let esquinas_redondeadas = CGSize(width: 20, height: 20)
+   let esquinasRedondeadas = CGSize(width: 15, height: 15)
     
-    
-    var body: some View {
-        HStack(alignment: VerticalAlignment.center, spacing: (10)){
-            Spacer()
-            
-            ZStack{
-                Rectangle()
-                    .frame(maxWidth: .infinity, maxHeight: 75)
-                    .foregroundColor(Color.purple)
-                    .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                TextField("Search", text: $nombre)
-                    .padding(10)
-                    .font(.system(size: 25))
-            }
-
-            .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Spacer()
-            
-            VStack {
-                Image(systemName: "magnifyingglass")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 50, alignment: .center)
-                    .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
-            }
-            
-            Spacer()
-        }
-        
-        .background(Color.purple)
-        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-        .frame(maxWidth: .infinity)
-        .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
-        .onTapGesture {
-            al_pulsar()
-        }
-    }
+   var body: some View {
+       HStack {
+           TextField("Buscar contacto", text: $textoBusqueda)
+               .padding()
+               .background(Color(UIColor.systemBackground))
+               .cornerRadius(10)
+               .shadow(radius: 1)
+           
+           Button(action: alPulsarBuscar) {
+               Image(systemName: "magnifyingglass")
+                   .foregroundColor(.white)
+                   .padding()
+                   .background(Color.brown)
+                   .cornerRadius(10)
+           }
+       }
+       .padding()
+       .background(Color(UIColor.secondarySystemBackground))
+       .cornerRadius(15)
+       .shadow(radius: 2)
+   }
 }
-
 #Preview {
-    barra_busqueda(contacto_a_mostrar: contacto_prueba)
+    @State var texto = ""
+    return BarraBusqueda(textoBusqueda: $texto)
 }

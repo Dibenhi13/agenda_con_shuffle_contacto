@@ -9,14 +9,14 @@
 import SwiftUI
  
 let contactos = [
-    ContactoAgenda(nombre: "Harry Potter", telefono:"12345"),
-    ContactoAgenda(nombre: "Hermione Granger", telefono:"123455"),
-    ContactoAgenda(nombre: "Ron Weasley", telefono:"3225"),
-    ContactoAgenda(nombre: "Draco Malfoy", telefono:"52415"),
-    ContactoAgenda(nombre: "Neville Longbottom", telefono:"12345"),
-    ContactoAgenda(nombre: "Severus Snape", telefono:"123455"),
-    ContactoAgenda(nombre: "Albus Dumbledore", telefono:"3225"),
-    ContactoAgenda(nombre: "Ginny Weasley", telefono:"52415"),
+    ContactoAgenda(nombre: "Harry Potter", telefono:"020 7946 0958"),
+    ContactoAgenda(nombre: "Hermione Granger", telefono:"0161 850 1234"),
+    ContactoAgenda(nombre: "Ron Weasley", telefono:"0117 987 6543"),
+    ContactoAgenda(nombre: "Draco Malfoy", telefono:"0131 222 3344"),
+    ContactoAgenda(nombre: "Neville Longbottom", telefono:"0141 999 8888"),
+    ContactoAgenda(nombre: "Severus Snape", telefono:"0151 777 666"),
+    ContactoAgenda(nombre: "Albus Dumbledore", telefono:"0161 444 235"),
+    ContactoAgenda(nombre: "Ginny Weasley", telefono:"0900 123 4567"),
 ]
 
 enum PantallasDisponibles: String, Identifiable{
@@ -37,20 +37,37 @@ struct PantallaAgenda: View {
     
     @State var pantalla_a_mostrar: PantallasDisponibles?
     
+    @State var texto_busqueda: String = ""
     
+       var contactos_filtrados: [ContactoAgenda] {
+           if texto_busqueda.isEmpty {
+               return contactos_actuales
+           } else {
+               return contactos_actuales.filter {
+                   $0.nombre.lowercased().contains(texto_busqueda.lowercased())
+               }
+           }
+       }
     
     var body: some View {
-        VStack{
-            ScrollView{
-                VStack (spacing: 10){
-                    ForEach(contactos_actuales){ contacto in
-                        ContactoPrevista(contacto_a_mostrar: contacto, al_pulsar:{
-                            print("Te envia saludos \(contacto.nombre) desde la pantalla agenda")
-                        })
+        NavigationStack{
+            VStack{
+                BarraBusqueda(textoBusqueda: $texto_busqueda, alPulsarBuscar: {
+                    
+                })
+                .padding(.horizontal)
+                
+                ScrollView{
+                    VStack (spacing: 10){
+                        ForEach(contactos_filtrados){ contacto in
+                            NavigationLink(destination: detalle_contacto(contacto: contacto)){
+                                ContactoPrevista(contacto_a_mostrar: contacto)
+                            }
+                        }
                     }
+                    .frame(alignment: Alignment.center)
+                    .padding(10)
                 }
-                .frame(alignment: Alignment.center)
-                .padding(10)
             }
             .background(Color.white)
             
